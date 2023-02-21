@@ -62,5 +62,32 @@ namespace Mission06_hwatso02.Controllers
 
             return View(movies);
         }
+
+        //Edit entry
+        [HttpGet]
+        public IActionResult Edit(int movieid)
+        {
+            ViewBag.Categories = movieContext.categories.ToList();
+            ViewBag.Ratings = movieContext.ratings.ToList();
+
+            var movie = movieContext.collection.Single(m => m.MovieId == movieid);
+
+            return View("Movies", movie);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(MovieCollection mc)
+        {
+            movieContext.Update(mc);
+            movieContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
+
+        //Delete entry
+        public IActionResult Delete()
+        {
+            return View();
+        }
     }
 }
