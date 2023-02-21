@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+
+@model List<MovieCollection>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited?</td>
+            <td>Lent To</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    <!--Loop through however many rows-->
+    <tbody>
+        @foreach (var m in Model)
+            {
+        <tr>
+            <td>@m.Category.CategoryName</td>
+            <td>@m.Title</td>
+            <td>@m.Year</td>
+            <td>@m.Director</td>
+            <td>@m.Rating.RatingName</td>
+            <td>@m.Edited</td>
+            <td>@m.LentTo</td>
+            <td>@m.Notes</td>
+        </tr>
+            }
+    </tbody>
+</table>

@@ -12,28 +12,31 @@ namespace Mission06_hwatso02.Models
         [Key]
         [Required]
         public int MovieId { get; set; }
+
         [Required]
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
+        //Build Foreign Key
+        public Category Category { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         [Required]
         public ushort Year { get; set; }
+
         [Required]
         public string Director { get; set; }
+
         [Required]
-        public MovieRating Rating { get; set; }
+        public int RatingId { get; set; }
+        //Build Foreign Key
+        public Rating Rating { get; set; }
+
         public bool Edited { get; set; }
+
         public string LentTo { get; set; }
+
         [MaxLength(25)]
         public string Notes { get; set; }
-    }
-
-    //get drop-down options
-    public enum MovieRating
-    {
-        G,
-        PG,
-        PG13,
-        R
     }
 }
