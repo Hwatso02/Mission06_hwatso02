@@ -38,16 +38,28 @@ namespace Mission06_hwatso02.Controllers
             ViewBag.Ratings = movieContext.ratings.ToList();
 
             return View();
+            //return View("Movies", new MovieCollection());
         }
 
         [HttpPost]
         public IActionResult Movies(MovieCollection mc)
         {
-            //read in data inputs
-            movieContext.Add(mc);
-            movieContext.SaveChanges();
+            //Validation
+            if (ModelState.IsValid)
+            {
+                //read in data inputs
+                movieContext.Add(mc);
+                movieContext.SaveChanges();
 
-            return View("Confirmation", mc);
+                return View("Confirmation", mc);
+            }
+            else
+            {
+                ViewBag.Categories = movieContext.categories.ToList();
+                ViewBag.Ratings = movieContext.ratings.ToList();
+
+                return View(mc);
+            }
         }
 
         //Action for Movie Table
@@ -85,9 +97,21 @@ namespace Mission06_hwatso02.Controllers
         }
 
         //Delete entry
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int movieid)
         {
-            return View();
+            var movie = movieContext.collection.Single(m => m.MovieId == movieid);
+
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(MovieCollection mc)
+        {
+            movieContext.collection.Remove(mc);
+            movieContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
     }
 }

@@ -9,6 +9,8 @@
 <!--Create form on page-->
 <div>
     <form method="post">
+        <div asp-validation-summary="All"></div>
+        <!--<input asp-for="MovieId" type="hidden"/>-->
         <label asp-for="Category">Category:</label>
         <select asp-for="CategoryId">
             <option value="">Select a Category</option>

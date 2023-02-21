@@ -13,21 +13,21 @@ namespace Mission06_hwatso02.Models
         [Required]
         public int MovieId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Movie Category is required")]
         public int CategoryId { get; set; }
         //Build Foreign Key
         public Category Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="A Move Title is required")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A Year is required")]
         public ushort Year { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Director is required")]
         public string Director { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Movie Rating is required")]
         public int RatingId { get; set; }
         //Build Foreign Key
         public Rating Rating { get; set; }
