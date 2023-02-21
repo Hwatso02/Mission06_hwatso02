@@ -38,7 +38,6 @@ namespace Mission06_hwatso02.Controllers
             ViewBag.Ratings = movieContext.ratings.ToList();
 
             return View();
-            //return View("Movies", new MovieCollection());
         }
 
         [HttpPost]

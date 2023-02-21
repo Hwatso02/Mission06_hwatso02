@@ -13,7 +13,7 @@ namespace Mission06_hwatso02.Models
         [Required]
         public int MovieId { get; set; }
 
-        [Required(ErrorMessage = "The Movie Category is required")]
+        [Required]
         public int CategoryId { get; set; }
         //Build Foreign Key
         public Category Category { get; set; }
@@ -27,7 +27,7 @@ namespace Mission06_hwatso02.Models
         [Required(ErrorMessage = "The Director is required")]
         public string Director { get; set; }
 
-        [Required(ErrorMessage = "The Movie Rating is required")]
+        [Required]
         public int RatingId { get; set; }
         //Build Foreign Key
         public Rating Rating { get; set; }
